@@ -2,7 +2,12 @@ import csv
 import datetime
 import requests
 import parsel
+# from rocketry import Rocketry
+# from rocketry.conds import (minutely, secondly)
 
+# app = Rocketry(config={'task_execution': 'async'})
+
+# @app.task(secondly)
 def produto_1():  # IMAC M1
     req = requests.get("https://www.zoom.com.br/search?q=imac%20m1")
     sel = parsel.Selector(text=req.text)
@@ -11,6 +16,7 @@ def produto_1():  # IMAC M1
     price = sel.xpath('//p[@class="Text_Text__h_AF6 Text_MobileHeadingS__Zxam2"]//text()').get()
     return [title, price]
 
+# @app.task(secondly)
 def produto_2():  # TV 65"
     req = requests.get(
         "https://www.zoom.com.br/search?q=tv%2065%20polegadas%204k&hitsPerPage=24&page=1&sortBy=price_asc&isDealsPage=false&enableRefinementsSuggestions=true")
@@ -22,15 +28,16 @@ def produto_2():  # TV 65"
         '//h3[@class="Text_Text__h_AF6 Text_MobileLabelXs__ER_cD Text_MobileLabelSAtLarge__YdYbv ProductCard_ProductCard_BestMerchant__AuGU6"]//text()').get()
     return [title, price, link]
 
-
+# @app.task(minutely)
 def organizador():
     pro1 = produto_1()
     pro2 = produto_2()
     now = datetime.datetime.now()
-    time = now.strftime("%H:%M -- %d/%m/%Y")
-    dado = open('dados.csv', 'w', newline='', encoding='utf-8')
-    escrita = csv.writer(dado)
-    escrita.writerow([pro2[0], pro2[1]])
-    dado.close
+    time = now.strftime("%d/%m/%Y as %H:%M ")
+    dado = open('dados.csv', 'a', newline='', encoding='utf-8')
+    esc = csv.writer(dado)
+    esc.writerow(['PRODUTO: ' + pro2[0], ' DATA: ' + time, ' PRECO: ' + pro2[1], ' ' + pro2[2]])
+    dado.close()
 
-    
+
+main = organizador()
