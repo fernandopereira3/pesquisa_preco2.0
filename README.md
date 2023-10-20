@@ -5,7 +5,7 @@ Project made to research prices for 65" TVs, scraping directly from the website 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | Web Scrapy
-| :label: Tecnologias | Python :snake: (tecnologias utilizadas)
+| :label: Tecnologias | Python :snake:
 
 
 ## Details
