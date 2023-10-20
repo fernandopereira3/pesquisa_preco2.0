@@ -1,11 +1,14 @@
-Adaptation of the preco_search this time it can search for more than one product without the beatiful soup class.
-More insistent and precise.
+# Web Scrapy
 
-HOW TO USE:
-Before using the Rocketry library used to automate the script, apparently there is a bug in Python 3.12, used to compile the script, so I used crontab for now.
+Project made to research prices for 65" TVs, scraping directly from the website zoom.com.br
 
-1 - create a folder and place the WSCRAPY.PY file inside.
-2 - then add the link wherever the price is tracked.
-3 - the script will generate a data.csv file, initially saved in /home, after which it will follow the cheapest price of the desired product.
+| :placard: Vitrine.Dev |     |
+| -------------  | --- |
+| :sparkles: Nome        | Web Scrapy
+| :label: Tecnologias | Python :snake: (tecnologias utilizadas)
 
-Improvements such as automation and email sending of data will be implemented as soon as I have more time ;)
+
+## Details
+
+This project was made for Black Friday 2023, I'm trying to buy another TV, done by reformulating the concept of the 'pequisa_preco' repository but this time the bot is implemented on an AWS EC2 and every 30 minutes it sends an email informing the lowest price found. Together with email, it generates a log where it stores all the prices collected in a txt file, I know it's not the best option but I'm not going to change it now, I'll correct it in future updates.
+For now I'll leave it as is but in the near future I'll implement more products and perhaps incorporate Pandas to generate graphs.
