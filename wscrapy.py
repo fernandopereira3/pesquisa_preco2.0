@@ -37,15 +37,18 @@ def enviar():
     msg = email.message.Message()
     msg['Subject'] = "ROBO"
     msg['From'] = 'sap.fernando.pereira@gmail.com'
-    msg['to'] = 'fernandopereira-3@hotmail.com', ''
+    paraRaquel = 'pereira.quel@hotmail.com'
+    paraFernando = 'fernandopereira-3@hotmail.com'
     password = "ilwvhquhfxbjthex"
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo)
     s = smtplib.SMTP('smtp.gmail.com: 587')
     s.starttls()
     s.login(msg['From'], password)
-    s.sendmail(msg['From'], msg['to'], msg.as_string().encode('utf-8'))
+    s.sendmail(msg['From'], paraRaquel, msg.as_string().encode('utf-8'))
+    s.sendmail(msg['From'], paraFernando, msg.as_string().encode('utf-8'))
 
 
 main = organizador()
 mail = enviar()
+
