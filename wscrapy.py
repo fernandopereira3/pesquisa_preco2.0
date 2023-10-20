@@ -19,14 +19,16 @@ def produto_1():  # IMAC M1
 # @app.task(secondly)
 def produto_2():  # TV 65"
     req = requests.get(
-        "https://www.zoom.com.br/search?q=tv%2065%20polegadas%204k&hitsPerPage=24&page=1&sortBy=price_asc&isDealsPage=false&enableRefinementsSuggestions=true")
+        "https://www.zoom.com.br/search?q=tv%2065%20polegadas%204k&hitsPerPage=24&page=1&sortBy=price_asc&isDealsPage=false&enableRefinementsSuggestions=true", headers={'USER_AGENT': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36'})
     sel = parsel.Selector(text=req.text)
+    # with open('site.html', 'w', encoding="utf-8") as s:
+    #     s.write(req.text)
     title = sel.xpath(
         '//h2[@class="Text_Text__h_AF6 Text_MobileLabelXs__ER_cD Text_DesktopLabelSAtLarge__baj_g ProductCard_ProductCard_Name__LT7hv"][1]//text()').get()
     price = sel.xpath('//p[@class="Text_Text__h_AF6 Text_MobileHeadingS__Zxam2"]//text()').get()
     link = sel.xpath(
         '//h3[@class="Text_Text__h_AF6 Text_MobileLabelXs__ER_cD Text_MobileLabelSAtLarge__YdYbv ProductCard_ProductCard_BestMerchant__AuGU6"]//text()').get()
-    return [title, price, link]
+    return title, price, link
 
 # @app.task(minutely)
 def organizador():
@@ -35,10 +37,15 @@ def organizador():
     now = datetime.datetime.now()
     time = now.strftime("%d/%m/%Y as %H:%M ")
     with open('dados.txt', 'a') as arquivo:
+        arquivo.write(' ' + '\n')
         arquivo.write("Produto: " + str(pro2[0]) + " PRECO: " + str(pro2[1]) + '\n')
-        arquivo.write("Melhor site: "+ str(pro2[2]) + '\n')
+        arquivo.write("Em "+ time +" - "+ str(pro2[2]) + '\n')
     arquivo.close()
 
 
 main = organizador()
+# produtos = produto_2()
+# print(produtos)
+
+# <p class="Text_Text__h_AF6 Text_MobileHeadingS__Zxam2" data-testid="product-card::price">R$ 2.799,00</p>
 
