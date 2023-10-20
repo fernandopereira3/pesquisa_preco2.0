@@ -34,10 +34,10 @@ def organizador():
     pro2 = produto_2()
     now = datetime.datetime.now()
     time = now.strftime("%d/%m/%Y as %H:%M ")
-    dado = open('/home/dados.csv', 'a', newline='', encoding='utf-8')
-    esc = csv.writer(dado)
-    esc.writerow(['PRODUTO: ' + pro2[0], ' DATA: ' + time, ' PRECO: ' + pro2[1], ' ' + pro2[2]])
-    dado.close()
+    with open('dados.txt', 'a') as arquivo:
+        arquivo.write("Produto: " + str(pro2[0]) + " PRECO: " + str(pro2[1]) + '\n')
+        arquivo.write("Melhor site: "+ str(pro2[2]) + '\n')
+    arquivo.close()
 
 
 main = organizador()
