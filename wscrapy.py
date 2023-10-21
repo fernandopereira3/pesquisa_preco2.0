@@ -45,7 +45,7 @@ def enviar():
     msg['From'] = 'sap.fernando.pereira@gmail.com'
     paraRaquel = 'pereira.quel@hotmail.com'
     paraFernando = 'fernandopereira-3@hotmail.com'
-    password = "ilwvhquhfxbjthex"
+    password = "********"
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo)
     try:
