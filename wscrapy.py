@@ -37,7 +37,9 @@ def log():
 
 def enviar():
     pro = produto_2()
-    corpo = "PRODUTO: " + str(pro[0]) + " PRECO: " + str(pro[1]) + " LOJA: " + str(pro[2])
+    now = datetime.datetime.now()
+    time = now.strftime("%d/%m/%Y as %H:%M ")
+    corpo = "PRODUTO: " + str(pro[0]) + " PRECO: " + str(pro[1]) + " LOJA: " + str(pro[2]) + " DATA: " + time
     msg = email.message.Message()
     msg['Subject'] = "ROBO"
     msg['From'] = 'sap.fernando.pereira@gmail.com'

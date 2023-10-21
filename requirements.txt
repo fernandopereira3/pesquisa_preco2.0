@@ -1,5 +1,5 @@
 datetime
 requests
-parsel
+parsel=1.8.1
 smtplib
 email.message
