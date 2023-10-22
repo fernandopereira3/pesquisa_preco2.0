@@ -1,8 +1,10 @@
 import datetime
+import time
 import requests
 import parsel
 import smtplib
 import email.message
+import schedule
 
 def produto_1():  # IMAC M1
     req = requests.get("https://www.zoom.com.br/search?q=imac%20m1")
@@ -45,7 +47,7 @@ def enviar():
     msg['From'] = 'sap.fernando.pereira@gmail.com'
     paraRaquel = 'pereira.quel@hotmail.com'
     paraFernando = 'fernandopereira-3@hotmail.com'
-    password = "********"
+    password = "ilwvhquhfxbjthex"
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo)
     try:
@@ -58,7 +60,10 @@ def enviar():
     except Exception as e:
         print(f"Error sending email: {e}")
 
+schedule.every(15).minutes.do(log)
+schedule.every(30).minutes.do(enviar)
 
-main = log()
-mail = enviar()
+while True:
+    schedule.run_pending()
+    time.sleep(120)
 

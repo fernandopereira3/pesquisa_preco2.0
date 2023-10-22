@@ -1,5 +1,4 @@
-datetime
-requests
-parsel=1.8.1
-smtplib
-email.message
+datetime == 5.2
+requests == 2.31.0
+parsel == 1.8.1
+schedule == 1.2.1
