@@ -44,10 +44,10 @@ def enviar():
     corpo = "PRODUTO: " + str(pro[0]) + " PRECO: " + str(pro[1]) + " LOJA: " + str(pro[2]) + " DATA: " + time
     msg = email.message.Message()
     msg['Subject'] = "ROBO"
-    msg['From'] = 'sap.fernando.pereira@gmail.com'
-    paraRaquel = 'pereira.quel@hotmail.com'
-    paraFernando = 'fernandopereira-3@hotmail.com'
-    password = "ilwvhquhfxbjthex"
+    msg['From'] = '********'
+    paraRaquel = '*********'
+    paraFernando = '********'
+    password = "*******"
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo)
     try:
