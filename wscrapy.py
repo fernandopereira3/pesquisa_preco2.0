@@ -23,7 +23,7 @@ def produto_2():  # TV 65"
         title = sel.xpath('//*[@id="main-container::name"]//text()').get()
         #price = sel.xpath('//*[@id="class"]/div/div[7]/div[1]/a/div[2]/div[2]/div[2]/p[1]//text()').get()
         #link = sel.xpath('//*[@id="__next"]/div/div[7]/div[1]/a/div[2]/div[2]/div[2]/h3//text()').get()
-        return title
+        return title, price, link
     except Exception as e:
         print(f"Error fetching product 2: {e}")
 
@@ -68,4 +68,3 @@ schedule.every(1).minutes.do(log)
 while True:
     schedule.run_pending()
     #time.sleep(120)
-
