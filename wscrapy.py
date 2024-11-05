@@ -66,4 +66,4 @@ schedule.every(30).minutes.do(enviar)
 while True:
     schedule.run_pending()
     time.sleep(120)
-
+#branch main
